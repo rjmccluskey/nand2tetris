@@ -13,5 +13,55 @@ CHIP Inc16 {
     OUT out[16];
 
     PARTS:
-   // Put you code here:
+    // Flip bits up to and including the first 0 (if bits at [n-1..0] are all 1, then flip bit n)
+    Not16(
+        in=in,
+        out[0]=notIn0,
+        out[1]=notIn1,
+        out[2]=notIn2,
+        out[3]=notIn3,
+        out[4]=notIn4,
+        out[5]=notIn5,
+        out[6]=notIn6,
+        out[7]=notIn7,
+        out[8]=notIn8,
+        out[9]=notIn9,
+        out[10]=notIn10,
+        out[11]=notIn11,
+        out[12]=notIn12,
+        out[13]=notIn13,
+        out[14]=notIn14,
+        out[15]=notIn15
+    );
+    And(a=in[0], b=in[1], out=and1);
+    And(a=and1, b=in[2], out=and2);
+    And(a=and2, b=in[3], out=and3);
+    And(a=and3, b=in[4], out=and4);
+    And(a=and4, b=in[5], out=and5);
+    And(a=and5, b=in[6], out=and6);
+    And(a=and6, b=in[7], out=and7);
+    And(a=and7, b=in[8], out=and8);
+    And(a=and8, b=in[9], out=and9);
+    And(a=and9, b=in[10], out=and10);
+    And(a=and10, b=in[11], out=and11);
+    And(a=and11, b=in[12], out=and12);
+    And(a=and12, b=in[13], out=and13);
+    And(a=and13, b=in[14], out=and14);
+
+    Not(in=in[0], out=out[0]);
+    Mux(a=in[1], b=notIn1, sel=in[0], out=out[1]);
+    Mux(a=in[2], b=notIn2, sel=and1, out=out[2]);
+    Mux(a=in[3], b=notIn3, sel=and2, out=out[3]);
+    Mux(a=in[4], b=notIn4, sel=and3, out=out[4]);
+    Mux(a=in[5], b=notIn5, sel=and4, out=out[5]);
+    Mux(a=in[6], b=notIn6, sel=and5, out=out[6]);
+    Mux(a=in[7], b=notIn7, sel=and6, out=out[7]);
+    Mux(a=in[8], b=notIn8, sel=and7, out=out[8]);
+    Mux(a=in[9], b=notIn9, sel=and8, out=out[9]);
+    Mux(a=in[10], b=notIn10, sel=and9, out=out[10]);
+    Mux(a=in[11], b=notIn11, sel=and10, out=out[11]);
+    Mux(a=in[12], b=notIn12, sel=and11, out=out[12]);
+    Mux(a=in[13], b=notIn13, sel=and12, out=out[13]);
+    Mux(a=in[14], b=notIn14, sel=and13, out=out[14]);
+    Mux(a=in[15], b=notIn15, sel=and14, out=out[15]);
 }
